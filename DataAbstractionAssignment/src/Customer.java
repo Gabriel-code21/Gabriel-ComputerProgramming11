@@ -77,7 +77,7 @@ public class Customer {
         return false;
     }
 
-    //do not modify
+    //do not modify 
     public void displayDeposits(){
         for(Deposit d : deposits){
             System.out.println(d);
