@@ -38,4 +38,4 @@ public class Friend {
     public String toString() {
         return name;
     }
-}
+} 
