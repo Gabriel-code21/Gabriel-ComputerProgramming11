@@ -18,11 +18,11 @@ public class Reminder {
         this.person = new Person();
     }
 
-    public Reminder(String reminderName, String reminderDueDate, Location loc, Person person) {
+    public Reminder(String reminderName, String reminderDueDate, Person person, Location loc) {
         this.name = reminderName;
         this.date = reminderDueDate;
-        this.place = loc;
         this.person = person;
+        this.place = loc;
     }
 
     public String getName() {

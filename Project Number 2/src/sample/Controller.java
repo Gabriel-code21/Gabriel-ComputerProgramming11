@@ -45,34 +45,38 @@ public class Controller {
     public Label personOutput;
     public Label locationOutput;
 
+    public Button btnDeleteReminder;
+
+    public Label lblAddReminderError;
+
     Reminder tempReminder;
 
     public void loadFilename(ActionEvent actionEvent) throws IOException {
-        System.out.println("ji");
-//        FileReader fr = new FileReader((txtLoadFilename.getText()+".txt"));
-//        BufferedReader br = new BufferedReader(fr);
-//        listOfReminders.getItems().remove(0, listOfReminders.getItems().size());
-//        String friend;
-//        while((friend = br.readLine()) != null) {
-//            String[] characteristics = friend.split("-@##@-"); // used to split words
-//            listOfReminders.getItems().add(new Friend(characteristics[0], Integer.parseInt(characteristics[1]), characteristics[2], characteristics[3], characteristics[4]));
-//        }
-//        br.close();
+        FileReader fr = new FileReader((txtLoadFilename.getText()+".txt"));
+        BufferedReader br = new BufferedReader(fr);
+        listOfReminders.getItems().remove(0, listOfReminders.getItems().size());
+        String reminder;
+        while((reminder = br.readLine()) != null) {
+            String[] characteristics = reminder.split("-@##@-"); // used to split words
+            listOfReminders.getItems().add(new Reminder(characteristics[0], characteristics[1], new Person(characteristics[2], Integer.parseInt(characteristics[3]), characteristics[4], characteristics[5]), new Location(characteristics[6], Integer.parseInt(characteristics[7]), Integer.parseInt(characteristics[8]), characteristics[9])));
+        }
+        br.close();
     }
 
     public void saveFilename(ActionEvent actionEvent) throws IOException {
-        System.out.println("ji");
-//        if (!(listOfReminders.getItems().isEmpty())) {
-//            FileWriter fw = new FileWriter((txtSaveFilename.getText()+".txt"));
-//            BufferedWriter bw = new BufferedWriter(fw);
-//            for (Friend f : listOfFriends.getItems()) {
-//                bw.write((f.getName() + "-@##@-" + f.getAge() + "-@##@-" + f.getGender() + "-@##@-" + f.getOccupation() + "-@##@-" + f.getCountry()) + "\r");
-//            }
-//            bw.close();
-//        }
+        if (!(listOfReminders.getItems().isEmpty())) {
+            FileWriter fw = new FileWriter((txtSaveFilename.getText()+".txt"));
+            BufferedWriter bw = new BufferedWriter(fw);
+            for (Reminder r : listOfReminders.getItems()) {
+                bw.write((r.getName() + "-@##@-" + r.getDate() + "-@##@-" + r.getPerson().getName() + "-@##@-" + r.getPerson().getAge() + "-@##@-" + r.getPerson().getOccupation()+ "-@##@-" + r.getPerson().getCountryOfBirth() + "-@##@-" + r.getPlace().getAddress() + "-@##@-" + r.getPlace().getLatitude() + "-@##@-" + r.getPlace().getLongitude() + "-@##@-" + r.getPlace().getZip() + "\r"));
+            }
+            bw.close();
+        }
     }
+
     public void createNewReminder(ActionEvent actionEvent) {
         btnCreateReminder.setDisable(true);
+        btnDeleteReminder.setDisable(true);
 
         txtReminderName.setDisable(false);
         txtReminderDate.setDisable(false);
@@ -91,6 +95,8 @@ public class Controller {
         btnAddLocation.setDisable(false);
 
         btnAddReminder.setDisable(false);
+
+        lblAddReminderError.setText("");
 
         tempReminder = new Reminder();
     }
@@ -122,6 +128,7 @@ public class Controller {
             btnAddPerson.setDisable(true);
 
             lblReminderError.setText("Name: "+tempReminder.getPerson().getName()+"\nLocation: "+tempReminder.getPlace().getAddress());
+            lblPersonError.setText("");
 
         } else {
         lblPersonError.setText("Fill in all the fields.");
@@ -140,6 +147,7 @@ public class Controller {
             btnAddLocation.setDisable(true);
 
             lblReminderError.setText("Name: "+tempReminder.getPerson().getName()+"\nLocation: "+tempReminder.getPlace().getAddress());
+            lblLocationError.setText("");
 
         } else {
             lblLocationError.setText("Fill in all the fields.");
@@ -149,8 +157,15 @@ public class Controller {
     public void addReminderToList(ActionEvent actionEvent) {
         if (btnFinishReminder.isDisabled() && btnAddPerson.isDisabled() && btnAddLocation.isDisabled()) {
             listOfReminders.getItems().add(tempReminder);
-            btnCreateReminder.setDisable(true);
-            btnAddReminder.setDisable(false);
+
+            btnAddReminder.setDisable(true);
+
+            btnCreateReminder.setDisable(false);
+            btnDeleteReminder.setDisable(false);
+
+            lblAddReminderError.setText("");
+        } else {
+            lblAddReminderError.setText("Complete all fields.");
         }
     }
 
@@ -160,6 +175,12 @@ public class Controller {
             reminderOutput.setText("What: "+r.getName()+"\nWhen: "+r.getDate());
             personOutput.setText("Name: "+r.getPerson().getName()+"\nAge: "+r.getPerson().getAge()+"\nOccupation: "+r.getPerson().getOccupation()+"\nBirth Country: "+r.getPerson().getCountryOfBirth());
             locationOutput.setText("Address: "+r.getPlace().getAddress()+"\nLatitude & Longitude: "+r.getPlace().getLatitude()+"° "+r.getPlace().getLongitude()+"°\nZip Code: "+r.getPlace().getZip());
+        }
+    }
+
+    public void deleteReminder(ActionEvent actionEvent) {
+        if (listOfReminders.getSelectionModel().getSelectedItem() != null) {
+            listOfReminders.getItems().remove(listOfReminders.getSelectionModel().getSelectedItem());
         }
     }
 }
