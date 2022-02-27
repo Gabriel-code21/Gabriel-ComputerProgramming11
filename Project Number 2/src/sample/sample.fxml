@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <Label text="To-Do Reminder App">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="166.0" prefWidth="600.0" spacing="10.0">
+         <children>
+            <ListView fx:id="listOfReminders" onMouseClicked="#onItemSelected" prefHeight="145.0" prefWidth="298.0" />
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Reminder:" />
+                  <Label fx:id="reminderOutput" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Person:" />
+                  <Label fx:id="personOutput" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Location:" />
+                  <Label fx:id="locationOutput" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="230.0" prefWidth="600.0" spacing="10.0">
+         <children>
+            <VBox prefHeight="217.0" prefWidth="169.0" spacing="20.0">
+               <children>
+                  <VBox prefHeight="90.0" prefWidth="166.0" spacing="10.0">
+                     <children>
+                        <Label text="Load reminder list from file" />
+                        <TextField fx:id="txtLoadFilename" prefHeight="25.0" prefWidth="124.0" promptText="Filename to load" />
+                        <Button fx:id="btnLoad" mnemonicParsing="false" onAction="#loadFilename" prefHeight="25.0" prefWidth="43.0" text="Load" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="101.0" prefWidth="166.0" spacing="10.0">
+                     <children>
+                        <Label text="Save reminder list to file" />
+                        <TextField fx:id="txtSaveFilename" prefHeight="25.0" prefWidth="124.0" promptText="Filename to save" />
+                        <Button fx:id="btnSave" mnemonicParsing="false" onAction="#saveFilename" prefHeight="25.0" prefWidth="43.0" text="Save" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="217.0" prefWidth="437.0" spacing="10.0">
+               <children>
+                  <Button fx:id="btnCreateReminder" mnemonicParsing="false" onAction="#createNewReminder" text="Create new reminder" />
+                  <HBox prefHeight="198.0" prefWidth="434.0" spacing="20.0">
+                     <children>
+                        <VBox prefHeight="187.0" prefWidth="116.0" spacing="20.0">
+                           <children>
+                              <Label text="Reminder" />
+                              <TextField fx:id="txtReminderName" disable="true" promptText="Reminder Name" />
+                              <TextField fx:id="txtReminderDate" disable="true" promptText="Date Due" />
+                              <Label fx:id="lblReminderError" />
+                              <Button fx:id="btnFinishReminder" disable="true" mnemonicParsing="false" onAction="#finishReminder" text="Finish Reminder" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+                           <children>
+                              <Label text="Person" />
+                              <TextField fx:id="txtPersonName" disable="true" promptText="Name" />
+                              <TextField fx:id="txtPersonAge" disable="true" promptText="Age" />
+                              <TextField fx:id="txtPersonOccupation" disable="true" promptText="Occupation" />
+                              <TextField fx:id="txtPersonBirthCountry" disable="true" promptText="Birth Country" />
+                              <Label fx:id="lblPersonError" />
+                              <Button fx:id="btnAddPerson" disable="true" mnemonicParsing="false" onAction="#addPersonToReminder" text="Add Person" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+                           <children>
+                              <Label text="Location" />
+                              <TextField fx:id="txtLocationAddress" disable="true" promptText="Address" />
+                              <TextField fx:id="txtLocationLatitude" disable="true" promptText="Latitude" />
+                              <TextField fx:id="txtLocationLongitude" disable="true" promptText="Longitude" />
+                              <TextField fx:id="txtLocationZip" disable="true" promptText="Zip Code" />
+                              <Label fx:id="lblLocationError" />
+                              <Button fx:id="btnAddLocation" disable="true" mnemonicParsing="false" onAction="#addLocation" text="Add Location" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="242.0" prefWidth="117.0">
+                           <children>
+                              <Button fx:id="btnAddReminder" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#addReminderToList" prefHeight="25.0" prefWidth="97.0" text="Add reminder" textAlignment="CENTER" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>
