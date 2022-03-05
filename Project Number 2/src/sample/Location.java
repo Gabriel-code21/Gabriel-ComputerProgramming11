@@ -2,22 +2,27 @@ package sample;
 
 public class Location {
     private String address;
-    private int latitude;
-    private int longitude;
-    private String zip;
+    private String city;
+    private String province;
+    private String zipCode;
 
+    // Constructor with no parameters
     public Location() {
         this.address = "N/A";
-        this.zip = "N/A";
+        this.city = "N/A";
+        this.province = "N/A";
+        this.zipCode = "N/A";
     }
 
-    public Location(String address, int latitude, int longitude, String zip) {
+    // Constructor with 4 parameters
+    public Location(String address, String city, String province, String zip) {
         this.address = address;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.zip = zip;
+        this.city = city;
+        this.province = province;
+        this.zipCode = zip;
     }
 
+    // Getters and Setters for all fields
     public String getAddress() {
         return address;
     }
@@ -26,32 +31,33 @@ public class Location {
         this.address = address;
     }
 
-    public int getLatitude() {
-        return latitude;
+    public String getCity() {
+        return city;
     }
 
-    public void setLatitude(int latitude) {
-        this.latitude = latitude;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public int getLongitude() {
-        return longitude;
+    public String getProvince() {
+        return province;
     }
 
-    public void setLongitude(int longitude) {
-        this.longitude = longitude;
+    public void setProvince(String province) {
+        this.province = province;
     }
 
-    public String getZip() {
-        return zip;
+    public String getZipCode() {
+        return zipCode;
     }
 
-    public void setZip(String zip) {
-        this.zip = zip;
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
+    // toString has been overridden to be able to print the Location Object
     @Override
     public String toString() {
-        return "Address: " + address + " Latitude: " + latitude + " Longitude: " + longitude + " Zip: " + zip;
+        return "Address: " + address + " City: " + city + " Province: " + province + " Zip Code: " + zipCode;
     }
 }

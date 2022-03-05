@@ -1,30 +1,28 @@
 package sample;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Date;
-
 public class Reminder {
     private String name;
     private String date;
-    private Location place;
+    private Location location;
     public Person person;
 
-
+    // Constructor with no parameters
     public Reminder() {
         this.name = "Not specified";
         this.date = "Not specified";
-        this.place = new Location();
         this.person = new Person();
+        this.location = new Location();
     }
 
+    // Constructor with 4 parameters
     public Reminder(String reminderName, String reminderDueDate, Person person, Location loc) {
         this.name = reminderName;
         this.date = reminderDueDate;
         this.person = person;
-        this.place = loc;
+        this.location = loc;
     }
 
+    // Getters and Setters for all fields
     public String getName() {
         return name;
     }
@@ -33,12 +31,12 @@ public class Reminder {
         this.name = name;
     }
 
-    public Location getPlace() {
-        return place;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setPlace(Location place) {
-        this.place = place;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public String getDate() {
@@ -57,6 +55,22 @@ public class Reminder {
         this.person = person;
     }
 
+    // Used to check if person and or place are empty
+    public String isEmpty() {
+        String toReturn = "";
+        if (this.person.getName().equals("Unknown Name") && this.location.getZipCode().equals("N/A")) {
+            toReturn = "Person and Location: Empty";
+        } else if (this.person.getName().equals("Unknown Name")) {
+            toReturn = "Person: Empty";
+        } else if (this.location.getZipCode().equals("N/A")) {
+            toReturn = "Location: Empty";
+        } else {
+            toReturn = "Complete";
+        }
+        return toReturn;
+    }
+
+    // toString has been overridden to be able to print the Reminder.name
     @Override
     public String toString() {
         return name;

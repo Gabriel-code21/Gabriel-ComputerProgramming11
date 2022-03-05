@@ -2,38 +2,57 @@ package sample;
 
 public class Person {
     private String name;
-    private int age;
     private String occupation;
     private String countryOfBirth;
 
+    // Constructor with no parameters
     public Person() {
         this.name = "Unknown Name";
-        this.age = -1;
-        this.occupation = "Unknown Occupation";
-        this.countryOfBirth = "Unknown Country of Birth";
+        this.occupation = "Not Specified";
+        this.countryOfBirth = "Not Specified";
     }
 
-    public Person(String name, int age, String occupation, String countryOfBirth) {
+    // Constructor with 3 parameters
+    public Person(String name, String occupation, String countryOfBirth) {
         this.name = name;
-        this.age = age;
         this.occupation = occupation;
         this.countryOfBirth = countryOfBirth;
     }
+    // Constructor with 1 parameters
+    public Person(String name) {
+        this.name = name;
+        this.occupation = "Not Specified";
+        this.countryOfBirth = "Not Specified";
+    }
 
+    // Constructor with 3 parameters
+    public Person(String name, boolean flag, String s) {
+        this.name = name;
+        this.occupation = "Not Specified";
+        this.countryOfBirth = "Not Specified";
+        if (flag) {
+            this.occupation = s;
+//            this.countryOfBirth = "Not Specified";
+        } else {
+//            this.occupation = "Not Specified";
+            this.countryOfBirth = s;
+        }
+    }
+
+//    // Constructor with 1 parameters
+//    public Person(String name, String countryOfBirth) {
+//        this.name = name;
+//        this.occupation = occupation;
+//        this.countryOfBirth = "Not Specified";
+//    }
+
+    // Getters and Setters for all fields
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public String getOccupation() {
@@ -52,8 +71,9 @@ public class Person {
         this.countryOfBirth = countryOfBirth;
     }
 
+    // toString has been overridden to be able to print the Person Object
     @Override
     public String toString() {
-        return "Name: "+name+" Age: "+age+" Occupation: "+ occupation+" Country of Birth: "+countryOfBirth;
+        return "Name: "+name+" Occupation: "+ occupation+" Country of Birth: "+countryOfBirth;
     }
 }

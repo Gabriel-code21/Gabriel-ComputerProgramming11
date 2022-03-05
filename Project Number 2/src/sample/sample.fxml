@@ -6,30 +6,38 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="900.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <Label text="To-Do Reminder App">
+      <Label text="Event Planner App">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
       <HBox alignment="CENTER" prefHeight="166.0" prefWidth="600.0" spacing="10.0">
          <children>
-            <ListView fx:id="listOfReminders" onMouseClicked="#onItemSelected" prefHeight="166.0" prefWidth="233.0" />
+            <VBox alignment="CENTER" prefHeight="166.0" prefWidth="247.0">
+               <children>
+                  <Label fx:id="lblAmountOfReminders" />
+                  <ListView fx:id="listOfReminders" onMouseClicked="#onItemSelected" prefHeight="166.0" prefWidth="233.0" />
+               </children>
+            </VBox>
             <VBox prefHeight="166.0" prefWidth="201.0">
                <children>
                   <Label text="Reminder:" />
                   <Label fx:id="reminderOutput" />
                </children>
             </VBox>
+            <Line endX="100.0" endY="150.0" startX="100.0" />
             <VBox prefHeight="166.0" prefWidth="226.0">
                <children>
                   <Label text="Person:" />
                   <Label fx:id="personOutput" />
                </children>
             </VBox>
+            <Line endX="100.0" endY="150.0" startX="100.0" />
             <VBox prefHeight="166.0" prefWidth="197.0">
                <children>
                   <Label text="Location:" />
@@ -38,7 +46,8 @@
             </VBox>
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="230.0" prefWidth="600.0" spacing="10.0">
+      <Line endX="780.0" startX="-100.0" />
+      <HBox alignment="CENTER" prefHeight="230.0" prefWidth="600.0" spacing="60.0">
          <children>
             <VBox prefHeight="217.0" prefWidth="169.0" spacing="20.0">
                <children>
@@ -58,7 +67,8 @@
                   </VBox>
                </children>
             </VBox>
-            <VBox prefHeight="217.0" prefWidth="437.0" spacing="10.0">
+            <Line endX="100.0" endY="350.0" startX="100.0" />
+            <VBox prefHeight="351.0" prefWidth="562.0" spacing="10.0">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
@@ -66,40 +76,39 @@
                         <Button fx:id="btnDeleteReminder" mnemonicParsing="false" onAction="#deleteReminder" text="Delete Reminder" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="198.0" prefWidth="434.0" spacing="20.0">
+                  <HBox prefHeight="279.0" prefWidth="457.0" spacing="20.0">
                      <children>
-                        <VBox prefHeight="279.0" prefWidth="121.0" spacing="20.0">
+                        <VBox alignment="TOP_CENTER" prefHeight="279.0" prefWidth="118.0" spacing="20.0">
                            <children>
                               <Label text="Reminder" />
                               <TextField fx:id="txtReminderName" disable="true" promptText="Reminder Name" />
                               <TextField fx:id="txtReminderDate" disable="true" promptText="Date Due" />
                               <Label fx:id="lblReminderError" />
-                              <Button fx:id="btnFinishReminder" disable="true" mnemonicParsing="false" onAction="#finishReminder" text="Finish Reminder" />
+                              <Button fx:id="btnFinishReminder" disable="true" mnemonicParsing="false" onAction="#completeReminder" text="Finish Reminder" />
                            </children>
                         </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+                        <VBox alignment="TOP_CENTER" prefHeight="279.0" prefWidth="140.0" spacing="20.0">
                            <children>
                               <Label text="Person" />
                               <TextField fx:id="txtPersonName" disable="true" promptText="Name" />
-                              <TextField fx:id="txtPersonAge" disable="true" promptText="Age" />
-                              <TextField fx:id="txtPersonOccupation" disable="true" promptText="Occupation" />
-                              <TextField fx:id="txtPersonBirthCountry" disable="true" promptText="Birth Country" />
+                              <TextField fx:id="txtPersonOccupation" disable="true" promptText="Occupation (optional)" />
+                              <TextField fx:id="txtPersonBirthCountry" disable="true" promptText="Birth Country (optional)" />
                               <Label fx:id="lblPersonError" />
                               <Button fx:id="btnAddPerson" disable="true" mnemonicParsing="false" onAction="#addPersonToReminder" text="Add Person" />
                            </children>
                         </VBox>
-                        <VBox prefHeight="279.0" prefWidth="108.0" spacing="20.0">
+                        <VBox alignment="TOP_CENTER" prefHeight="279.0" prefWidth="128.0" spacing="20.0">
                            <children>
                               <Label text="Location" />
                               <TextField fx:id="txtLocationAddress" disable="true" promptText="Address" />
-                              <TextField fx:id="txtLocationLatitude" disable="true" promptText="Latitude" />
-                              <TextField fx:id="txtLocationLongitude" disable="true" promptText="Longitude" />
+                              <TextField fx:id="txtLocationCity" disable="true" promptText="City" />
+                              <TextField fx:id="txtLocationProvince" disable="true" promptText="Province" />
                               <TextField fx:id="txtLocationZip" disable="true" promptText="Zip Code" />
                               <Label fx:id="lblLocationError" />
-                              <Button fx:id="btnAddLocation" disable="true" mnemonicParsing="false" onAction="#addLocation" text="Add Location" />
+                              <Button fx:id="btnAddLocation" disable="true" mnemonicParsing="false" onAction="#addLocationToReminder" text="Add Location" />
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="242.0" prefWidth="117.0">
+                        <VBox alignment="CENTER" prefHeight="279.0" prefWidth="124.0">
                            <children>
                               <Button fx:id="btnAddReminder" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#addReminderToList" prefHeight="25.0" prefWidth="97.0" text="Add reminder" textAlignment="CENTER" />
                               <Label fx:id="lblAddReminderError" />
