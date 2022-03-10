@@ -95,6 +95,7 @@ public class Controller {
         }
     }
 
+    // Load Friends From a File - the reason -@@- is used it because it is very unique and won't be used as part of the users input. This is better than a space or an enter.
     public void loadFriends(ActionEvent actionEvent) throws IOException {
         FileReader fr = new FileReader((txtLoadFileName.getText()+".txt"));
         BufferedReader br = new BufferedReader(fr);
@@ -107,6 +108,7 @@ public class Controller {
         br.close();
     }
 
+    // Save friends to a file - the reason -@@- is used it because it is very unique and won't be used as part of the users input. This is better than a space or an enter.
     public void saveFriendsToFile(ActionEvent actionEvent) throws IOException {
         if (!(listOfFriends.getItems().isEmpty())) {
             FileWriter fw = new FileWriter((txtSaveCurrentFriends.getText()+".txt"));

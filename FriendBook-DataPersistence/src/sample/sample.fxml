@@ -37,6 +37,7 @@
                         <Button fx:id="btnSaveCurrentFriends" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#saveFriendsToFile" text="Save Friends to File" />
                      </children>
                   </HBox>
+                  <Label prefHeight="43.0" prefWidth="218.0" text="Note - Please remember the exact spelling of your file names for future use." textAlignment="CENTER" wrapText="true" />
                     </children>
                 </VBox>
                 <VBox alignment="CENTER" prefHeight="383.0" prefWidth="500.0">
