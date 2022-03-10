@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="900.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <Label text="Event Planner App">
          <font>
@@ -47,24 +47,27 @@
          </children>
       </HBox>
       <Line endX="780.0" startX="-100.0" />
-      <HBox alignment="CENTER" prefHeight="230.0" prefWidth="600.0" spacing="60.0">
+      <HBox alignment="CENTER" prefHeight="439.0" prefWidth="900.0" spacing="60.0">
          <children>
-            <VBox prefHeight="217.0" prefWidth="169.0" spacing="20.0">
+            <VBox prefHeight="380.0" prefWidth="186.0" spacing="20.0">
                <children>
                   <VBox prefHeight="90.0" prefWidth="166.0" spacing="10.0">
                      <children>
                         <Label text="Load reminder list from file" />
-                        <TextField fx:id="txtLoadFilename" prefHeight="25.0" prefWidth="124.0" promptText="Filename to load" />
+                        <TextField fx:id="txtLoadFilename" prefHeight="25.0" prefWidth="124.0" promptText="Filename to load. No extension" />
                         <Button fx:id="btnLoad" mnemonicParsing="false" onAction="#loadFilename" prefHeight="25.0" prefWidth="43.0" text="Load" />
                      </children>
                   </VBox>
                   <VBox prefHeight="101.0" prefWidth="166.0" spacing="10.0">
                      <children>
                         <Label text="Save reminder list to file" />
-                        <TextField fx:id="txtSaveFilename" prefHeight="25.0" prefWidth="124.0" promptText="Filename to save" />
+                        <TextField fx:id="txtSaveFilename" prefHeight="25.0" prefWidth="189.0" promptText="Filename to save. No extension" />
                         <Button fx:id="btnSave" mnemonicParsing="false" onAction="#saveFilename" prefHeight="25.0" prefWidth="43.0" text="Save" />
                      </children>
                   </VBox>
+                  <Label alignment="CENTER" contentDisplay="TOP" lineSpacing="1.0" prefHeight="67.0" prefWidth="186.0" text="Note - Please remember the exact spelling of your file names for future use." textAlignment="CENTER" wrapText="true" />
+                  <Line endX="35.0" startX="-150.0" />
+                  <Label prefHeight="115.0" prefWidth="186.0" text="Steps: 1. Click &quot;Create Reminder&quot;  2. After filling in all the required fields, click the &quot;Finish Reminder&quot;, &quot;Add Person&quot;, &quot;Add Location&quot; and finally &quot;Add Reminder&quot;" textAlignment="CENTER" wrapText="true" />
                </children>
             </VBox>
             <Line endX="100.0" endY="350.0" startX="100.0" />
@@ -110,7 +113,7 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="279.0" prefWidth="124.0">
                            <children>
-                              <Button fx:id="btnAddReminder" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#addReminderToList" prefHeight="25.0" prefWidth="97.0" text="Add reminder" textAlignment="CENTER" />
+                              <Button fx:id="btnAddReminder" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#addReminderToList" prefHeight="25.0" prefWidth="97.0" text="Add Reminder" textAlignment="CENTER" />
                               <Label fx:id="lblAddReminderError" />
                            </children>
                         </VBox>

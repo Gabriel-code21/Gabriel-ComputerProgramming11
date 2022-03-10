@@ -56,6 +56,9 @@ public class Reminder {
     }
 
     // Used to check if person and or place are empty
+    // Requires: nothing
+    // Modifies: nothing
+    // Effects: returns whether the Reminder class is empty
     public String isEmpty() {
         String toReturn = "";
         if (this.person.getName().equals("Unknown Name") && this.location.getZipCode().equals("N/A")) {
