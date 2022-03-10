@@ -57,7 +57,6 @@ public class ReminderTest {
         assertEquals(c.tempReminder.getLocation().getAddress(), "123 Cool Ave");
     }
 
-
     // Testing to make sure all the constructors of the Person class work
     @Test
     public void testInstantiatePerson() {
